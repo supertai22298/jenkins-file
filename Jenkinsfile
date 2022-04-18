@@ -1,34 +1,11 @@
 pipeline{
-    agent{
-        label "node"
-    }
-    stages{
-        stage("A"){
+    agent any
+    stages {
+        stage("Clone") {
             steps{
                 echo "========executing A========"
+                git "https://github.com/supertai22298/jenkins-file.git"
             }
-            post{
-                always{
-                    echo "========always========"
-                }
-                success{
-                    echo "========A executed successfully========"
-                }
-                failure{
-                    echo "========A execution failed========"
-                }
-            }
-        }
-    }
-    post{
-        always{
-            echo "========always========"
-        }
-        success{
-            echo "========pipeline executed successfully ========"
-        }
-        failure{
-            echo "========pipeline execution failed========"
         }
     }
 }
